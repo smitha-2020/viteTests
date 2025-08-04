@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Greet from "../components/Greet";
+import Greet from "../../components/Greet";
 
 describe("Test Suite for checking greet component", () => {
   it("should check if the heading tag exists", () => {
