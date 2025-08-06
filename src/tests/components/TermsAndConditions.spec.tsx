@@ -4,30 +4,36 @@ import { userEvent } from "@testing-library/user-event";
 
 describe("check the terms and condition component", () => {
   beforeEach(() => render(<TermsAndConditions />));
+  const componentRender = () => {
+    return {
+      checkboxx: screen.getByLabelText(/accept/i, { selector: "input" }),
+      heading: screen.getByRole("heading", { level: 1 }),
+      button: screen.getByRole("button"),
+    };
+  };
+
   it("should check the initial state checkbox uncheked and button grayed out", () => {
+    componentRender();
     screen.debug();
 
-    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
+    const { checkboxx, heading, button } = componentRender();
 
-    const checkbox = screen.getByLabelText(/accept/i, { selector: "input" });
-    expect(checkbox).toBeInTheDocument();
-    expect(checkbox).not.toBeChecked();
-
-    const button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
+    expect(heading).toBeInTheDocument();
+    expect(checkboxx).toBeInTheDocument();
+    expect(checkboxx).not.toBeChecked();
     expect(button).toBeDisabled();
   });
 
   it("should check the iif the button is enabled when the checbox is checked", async () => {
+    componentRender();
     screen.debug();
+    const { checkboxx, button } = componentRender();
 
-    const checkbox = screen.getByLabelText(/accept/i, { selector: "input" });
     const user = userEvent.setup();
+    await user.click(checkboxx);
 
-    await user.click(checkbox);
-    expect(checkbox).toBeInTheDocument();
-    expect(checkbox).toBeEnabled();
-
-    expect(screen.getByRole("button")).toBeEnabled();
+    expect(checkboxx).toBeInTheDocument();
+    expect(checkboxx).toBeEnabled();
+    expect(button).toBeEnabled();
   });
 });
