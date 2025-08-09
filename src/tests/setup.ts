@@ -3,6 +3,13 @@ import ResizeObserver from "resize-observer-polyfill";
 
 global.ResizeObserver = ResizeObserver;
 
+import { beforeAll, afterEach, afterAll } from "vitest";
+import { server } from "./server";
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
 window.HTMLElement.prototype.scrollIntoView = vi.fn();
 window.HTMLElement.prototype.hasPointerCapture = vi.fn();
 window.HTMLElement.prototype.releasePointerCapture = vi.fn();
