@@ -38,7 +38,7 @@ const ProductForm = ({ product, onSubmit }: Props) => {
       onSubmit={handleSubmit(async (formData) => {
         try {
           setSubmitting(true);
-          await onSubmit(formData);
+          onSubmit(formData);
         } catch (error) {
           toast.error("An unexpected error occurred");
         } finally {
@@ -49,7 +49,15 @@ const ProductForm = ({ product, onSubmit }: Props) => {
     >
       <Box>
         <TextField.Root className="max-w-sm">
-          <TextField.Input placeholder="Name" {...register("name")} size="3" />
+          <TextField.Input
+            placeholder="Name"
+            {...register("name", {
+              required: true,
+              pattern: /^[A-Za-z]+$/,
+            })}
+            size="3"
+            autoFocus
+          />
         </TextField.Root>
         <ErrorMessage error={errors.name} />
       </Box>
@@ -60,7 +68,7 @@ const ProductForm = ({ product, onSubmit }: Props) => {
             placeholder="Price"
             maxLength={5}
             size="3"
-            {...register("price", { valueAsNumber: true })}
+            {...register("price", { valueAsNumber: true, min: 18, max: 10000 })}
           />
         </TextField.Root>
         <ErrorMessage error={errors.price} />

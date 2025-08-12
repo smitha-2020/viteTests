@@ -16,8 +16,8 @@
   "products": [
     {
       "id": 1,
-      "name": "Refined Concrete Soap",
-      "price": 899,
+      "name": "Soapy Python milks",
+      "price": 1000,
       "categoryId": 1
     },
     {
@@ -391,6 +391,42 @@
       "price": 10,
       "categoryId": 1,
       "id": 63
+    },
+    {
+      "name": "smitha",
+      "price": 899,
+      "categoryId": 2,
+      "id": 64
+    },
+    {
+      "name": "ertert",
+      "price": 435,
+      "categoryId": 3,
+      "id": 65
+    },
+    {
+      "name": "rrrr",
+      "price": 445,
+      "categoryId": 3,
+      "id": 66
+    },
+    {
+      "name": "asas",
+      "price": 234,
+      "categoryId": 3,
+      "id": 67
+    },
+    {
+      "id": 68,
+      "name": "@werw",
+      "price": 899,
+      "categoryId": 2
+    },
+    {
+      "name": "wew777",
+      "price": 324,
+      "categoryId": 2,
+      "id": 69
     }
   ]
 }
